@@ -39,6 +39,7 @@ class MyTaskHandler extends TaskHandler {
     // Send data to the main isolate.
     sendPort?.send(_eventCount);
 
+    debugPrint('isTaskKilled is ${await FlutterForegroundTask.isTaskKilled}');
     _eventCount++;
   }
 

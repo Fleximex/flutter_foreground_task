@@ -99,4 +99,6 @@ class ForegroundServiceManager {
 
 	/** Returns whether the foreground service is running. */
 	fun isRunningService(): Boolean = ForegroundService.isRunningService
+
+	fun isTaskKilled(): Boolean = ForegroundService.isTaskKilled
 }

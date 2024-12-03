@@ -60,6 +60,10 @@ abstract class FlutterForegroundTaskPlatform extends PlatformInterface {
     throw UnimplementedError('isRunningService has not been implemented.');
   }
 
+  Future<bool> get isTaskKilled {
+    throw UnimplementedError('isTaskKilled has not been implemented.');
+  }
+
   Future<bool> get attachedActivity {
     throw UnimplementedError('attachedActivity has not been implemented.');
   }

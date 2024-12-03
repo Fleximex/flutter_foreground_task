@@ -146,6 +146,11 @@ class MethodChannelFlutterForegroundTask extends FlutterForegroundTaskPlatform {
   }
 
   @override
+  Future<bool> get isTaskKilled async {
+    return await methodChannel.invokeMethod('isTaskKilled');
+  }
+
+  @override
   Future<bool> get attachedActivity async {
     if (Platform.isAndroid) {
       return await methodChannel.invokeMethod('attachedActivity');

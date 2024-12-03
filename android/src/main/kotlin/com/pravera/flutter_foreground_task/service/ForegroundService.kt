@@ -45,6 +45,9 @@ class ForegroundService : Service(), MethodChannel.MethodCallHandler {
 		/** Returns whether the foreground service is running. */
 		var isRunningService = false
 			private set
+
+		var isTaskKilled = false
+			private set
 	}
 
 	private lateinit var foregroundServiceStatus: ForegroundServiceStatus
@@ -72,6 +75,12 @@ class ForegroundService : Service(), MethodChannel.MethodCallHandler {
 				Log.e(TAG, "onReceive", e)
 			}
 		}
+	}
+
+	override fun onTaskRemoved(rootIntent: Intent?) {
+		super.onTaskRemoved(rootIntent)
+		Log.d("Foreground Service", "App removed from recent tasks")
+		isTaskKilled = true
 	}
 
 	override fun onCreate() {
@@ -171,6 +180,7 @@ class ForegroundService : Service(), MethodChannel.MethodCallHandler {
 
 	@SuppressLint("WrongConstant", "SuspiciousIndentation")
 	private fun startForegroundService() {
+		isTaskKilled = false
 		// channel info
 		val pm = applicationContext.packageManager
 		val channelId = notificationOptions.channelId

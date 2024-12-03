@@ -115,6 +115,10 @@ class FlutterForegroundTask {
   static Future<bool> get isRunningService =>
       FlutterForegroundTaskPlatform.instance.isRunningService;
 
+  /// Returns whether the main UI is killed.
+  static Future<bool> get isTaskKilled =>
+      FlutterForegroundTaskPlatform.instance.isTaskKilled;
+
   /// Get the [ReceivePort].
   static ReceivePort? get receivePort => _registerPort();
 
